@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/styles';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  };
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.container}>
+
+        <TextField placeholder="Name" />
+      </div>
+    );
+  }
 }
-
-export default App;
+const styles = (theme) => ({
+  container: {
+    textAlign: "right"
+  }
+});
+export default withStyles(styles)(App);
