@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import ThemeContainer from './ThemeContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/site.css';
 
 const rootElement = document.querySelector('#root')
 

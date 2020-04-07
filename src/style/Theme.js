@@ -2,27 +2,21 @@ export const LightTheme = {
     direction: 'rtl', // Both here and <body dir="rtl">
     typography: {
         fontFamily: [
-            'IRANSans',
+            'Vazir',
         ].join(','),
+        fontSize: 12
     },
     palette: {
-        primary: { main: '#2e3743', },
-        success: {
-            light: "#52c7b8",
-            main: "#009688",
-            dark: "#00675b",
-            contrastText: "#fff",
+        primary: {
+            main: '#3E92E6',
         },
-        prim: {
-            main: "#fecb04",
-        },
+        divide2: '#EBEBEB',
         background: {
-            main: "#2e3743",
-            text: '#fff',
-            text2: '#fecb04',
-
-            paper: "#fff",
+            paper: "#F4F4F4",
             default: "#fff"
+        },
+        text: {
+            custom: '#BEBEBE'
         }
     },
     overrides: {
@@ -32,6 +26,8 @@ export const LightTheme = {
             root: {
                 // Some CSS
                 outline: 'none !important',
+                height: 33,
+                borderRadius: 8
             },
         },
     },
