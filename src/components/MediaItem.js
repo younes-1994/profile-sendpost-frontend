@@ -41,6 +41,7 @@ const styles = (theme) => ({
         height: 166,
         margin: '5px 1.25%',
         borderRadius: 8,
+        transition:'all 200ms ease',
         '& img': {
             width: '100%',
             height: '100%',

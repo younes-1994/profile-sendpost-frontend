@@ -22,7 +22,11 @@ class Footer extends React.PureComponent {
     };
 
     onPublishClicked = () => {
-        console.log(this.props.PostReducers)
+        // let Post = JSON.stringify({
+        //     Post: this.props.PostReducers
+        // })
+        let Post = { Post: this.props.PostReducers }
+        console.log(Post);
     }
 
     render() {

@@ -44,13 +44,13 @@ class Category extends React.PureComponent {
             const { categoriesList } = this.props;
             categoriesList.push({ chName: this.inputRef.value });
             this.props.SetProp("categoriesList", categoriesList);
-            this.openHandlerNew();
+            setTimeout(() => { this.openHandlerNew(); }, 200)
         }
     }
 
     onSelect = (e, item) => {
         this.props.SetProp("chSelectedCategory", item.chName);
-        this.openHandler();
+        setTimeout(() => { this.openHandler(); }, 200)
     }
 
     render() {
@@ -67,12 +67,12 @@ class Category extends React.PureComponent {
                             </ButtonBase>
                         }
                         {open && categoriesList.map((item, index) => (
-                            <ButtonBase className={clsx(classes.button, "animated fadeInDown")} key={index} onClick={(e) => this.onSelect(e, item)}>
+                            <ButtonBase className={clsx(classes.button, "")} key={index} onClick={(e) => this.onSelect(e, item)}>
                                 <Typography variant="button">{item.chName}</Typography>
                             </ButtonBase>
                         ))}
                         {(open || openNew) &&
-                            <ButtonBase className={clsx(classes.button, "mt-1 animated fadeInDown")} onClick={this.openHandlerNew}>
+                            <ButtonBase className={clsx(classes.button, "mt-1")} onClick={this.openHandlerNew}>
                                 <Typography variant="button">دسته بندی جدید</Typography>
                                 <AddIcon color="primary" className={clsx(classes.rotate, { [classes.rotated_45]: openNew })} />
                             </ButtonBase>
@@ -89,7 +89,7 @@ class Category extends React.PureComponent {
                             </div>
                         }
                         {openNew &&
-                            <Button variant="contained" color="primary" className={clsx(classes.createButton, "animated fadeInUp mr-2 mb-2")} onClick={this.onCreateClicked} >
+                            <Button variant="contained" color="primary" className={clsx(classes.createButton, "mr-2 mb-2")} onClick={this.onCreateClicked} >
                                 <Typography variant="button">ایجاد</Typography>
                             </Button>
                         }
@@ -100,6 +100,10 @@ class Category extends React.PureComponent {
     }
 }
 const styles = (theme) => ({
+    '@keyframes menu': {
+        '0%': { opacity: 0 },
+        '100%': { opacity: 1 }
+    },
     root: {
         position: 'relative',
         display: 'flex',
@@ -123,7 +127,17 @@ const styles = (theme) => ({
         zIndex: 1
     },
     containerExpanded: {
-        height: 'fit-content'
+        height: 'fit-content',
+        '& button': {
+            opacity: 0,
+            '&:nth-child(1)': { opacity: 1 },
+            '&:nth-child(2)': menuCreatorStyle(2),
+            '&:nth-child(3)': menuCreatorStyle(3),
+            '&:nth-child(4)': menuCreatorStyle(4),
+            '&:nth-child(5)': menuCreatorStyle(5),
+            '&:nth-child(6)': menuCreatorStyle(6),
+            '&:nth-child(7)': menuCreatorStyle(7),
+        }
     },
     button: {
         width: '100%',
@@ -151,6 +165,17 @@ const styles = (theme) => ({
         padding: 0
     }
 });
+
+const menuCreatorStyle = (i) => {
+    return {
+        animationName: '$menu',
+        animationDuration: '200ms',
+        animationDelay: `${(100 * i) + 100}ms`,
+        animationTimingFunction: 'ease-in-out',
+        animationFillMode: 'forwards'
+    }
+
+}
 
 const mapStateToProps = state => ({
     categoriesList: state.PostReducers.categoriesList,
