@@ -1,10 +1,8 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/styles';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
-import AvatarImg from '../image/avatar.png';
+import Category from './Category';
 
 class Header extends React.PureComponent {
     constructor(props) {
@@ -14,17 +12,12 @@ class Header extends React.PureComponent {
     };
 
     render() {
-        const { classes } = this.props;
+        // console.log('header rendered');
+        const { classes, ProfileReducers } = this.props;
         return (
             <div className={classes.container}>
-                <div>
-                    <img className={classes.avatar} alt="نام کاربر" src={AvatarImg} />
-                </div>
-                <div>
-                    <Button variant="contained" color="primary">
-                        <Typography variant="button">انتشار</Typography>
-                    </Button>
-                </div>
+                <img className={classes.avatar} alt={ProfileReducers.chUserTitle} src={ProfileReducers.avatar} />
+                <Category />
             </div>
         );
     }
@@ -44,4 +37,11 @@ const styles = (theme) => ({
         borderRadius: 50
     }
 });
-export default withStyles(styles)(Header);
+
+const mapStateToProps = state => ({
+    ProfileReducers: state.ProfileReducers
+});
+
+export default connect(
+    mapStateToProps
+)(withStyles(styles)(Header));

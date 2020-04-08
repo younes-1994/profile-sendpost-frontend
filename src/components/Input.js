@@ -36,6 +36,7 @@ const styles = (theme) => ({
         background: 'inherit',
         fontSize: 12,
         color: theme.palette.text.primary,
+        width: '100%',
         '&::placeholder': {
             color: theme.palette.text.custom,
         },

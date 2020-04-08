@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store/store';
 import * as serviceWorker from './serviceWorker';
 import ThemeContainer from './ThemeContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/site.css';
+import './css/animate.css';
 
 const rootElement = document.querySelector('#root')
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeContainer />
+    <Provider store={store} >
+      <ThemeContainer />
+    </Provider>
   </React.StrictMode>,
   rootElement
 );
