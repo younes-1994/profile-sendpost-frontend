@@ -15,19 +15,25 @@ class MediaItem extends React.PureComponent {
         }
     };
 
-    onClose = (row) => {
+    onClose = (row, event) => {
+        // let Element = document.getElementById(row.lastModified);
+        // Element.classList.add("animated");
+        // Element.classList.add("fastest");
+        // Element.classList.add("bounceOutOnce");
+
         const { PostReducers } = this.props;
         const Images = PostReducers.Images.filter(item => item.name !== row.name);
         this.props.SetProp("Images", Images);
+        // setTimeout(() => { this.props.SetProp("Images", Images); }, 300);
     }
 
     render() {
         const { classes, item, index, PostReducers } = this.props;
         let totalLength = PostReducers.Images.length;
         return (
-            <div className={clsx(classes.item, { [classes.item_full]: totalLength % 2 !== 0 && totalLength === index + 1 })} key={index}>
+            <div id={item.lastModified} className={clsx(classes.item, { [classes.item_full]: totalLength % 2 !== 0 && totalLength === index + 1 })} key={index}>
                 <img alt={item.name} src={item.file} />
-                <IconButton onClick={() => this.onClose(item)}>
+                <IconButton onClick={(event) => this.onClose(item, event)}>
                     <CloseIcon />
                 </IconButton>
             </div>
@@ -41,7 +47,7 @@ const styles = (theme) => ({
         height: 166,
         margin: '5px 1.25%',
         borderRadius: 8,
-        transition:'all 200ms ease',
+        transition: 'all 200ms ease',
         '& img': {
             width: '100%',
             height: '100%',

@@ -1,10 +1,13 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
+import { Button } from "antd";
 
 import Header from './components/Header';
 import Content from './components/Content';
 import Media from './components/Media';
 import Footer from './components/Footer';
+
+import './App.scss';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -18,6 +21,9 @@ class App extends React.PureComponent {
     return (
       <div className={classes.container}>
         <Header />
+        <Button type="primary" style={{ marginLeft: 8 }} className="test">
+          Primary Button
+    </Button>
         <Content />
         <Media />
         <Footer />
