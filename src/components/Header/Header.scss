@@ -1,0 +1,15 @@
+@import '../../style/theme.scss';
+
+.Header-container{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color: $body-background;
+}
+.Header-avatar{
+    width: 42px;
+    height: 42px;
+    border-radius: 50px;
+}

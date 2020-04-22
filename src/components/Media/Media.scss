@@ -1,0 +1,48 @@
+@import '../../style/theme.scss';
+@import '../../style/general.scss';
+
+@include keyframes(mediaItem) {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    25% {
+        opacity: 1;
+        transform: scale3d(0.6, 0.6, 0.6);
+    }
+    50% {
+        opacity: 1;
+        transform:  scale3d(0.9, 0.9, 0.9);
+    }
+    75% {
+        opacity: 1;
+        transform:  scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+  }
+
+@mixin media($i) {
+    @include animate(mediaItem,200ms,($i*100)+100ms , cubic-bezier(0.215, 0.61, 0.355, 1),forwards);
+}
+
+.Media-container{
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    // paddingTop: 30,
+    & div{
+        opacity: 0;
+        &:nth-child(1){@include media(1)};
+        &:nth-child(2){@include media(2)};
+        &:nth-child(3){@include media(3)};
+        &:nth-child(4){@include media(4)};
+        &:nth-child(5){@include media(5)};
+        &:nth-child(6){@include media(6)};
+        &:nth-child(7){@include media(7)};
+    }
+
+}

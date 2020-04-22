@@ -1,0 +1,10 @@
+@import '../../style/theme.scss';
+
+.Content-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: $body-background;
+    padding-top: 30px;
+}

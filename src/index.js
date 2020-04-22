@@ -5,7 +5,8 @@ import store from './store/store';
 import * as serviceWorker from './serviceWorker';
 import ThemeContainer from './ThemeContainer';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './style/site.scss';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/animate.css';
 
 const rootElement = document.querySelector('#root')

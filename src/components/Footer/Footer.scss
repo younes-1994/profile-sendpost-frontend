@@ -1,0 +1,21 @@
+@import '../../style/theme.scss';
+@import '../../style/general.scss';
+
+.Footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    height: 57px;
+    background-color: $body-background;
+    border: 1px solid $divide2;
+    padding: 12px;
+    @media(min-width:768px){
+        width: 70%;
+        margin: auto;
+    };
+}

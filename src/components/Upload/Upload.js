@@ -1,20 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { SetProp } from '../store/Post';
+import { SetProp } from '../../store/Post';
 
-import { withStyles } from '@material-ui/styles';
+import './Upload.scss';
 
-class Upload extends React.PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    };
+const Upload = (props) => {
+    const { name, accept, children } = props;
 
-
-    upload = (event) => {
-        const { name, PostReducers } = this.props;
+    const upload = (event) => {
+        const { name, PostReducers } = props;
         let list = PostReducers[name];
         let files = event.target.files;
         for (let i = 0; i < files.length; i++) {
@@ -29,7 +24,7 @@ class Upload extends React.PureComponent {
                     lastModified: file.lastModified,
                     lastModifiedDate: file.lastModifiedDate
                 });
-                this.props.SetProp(name, list);
+                props.SetProp(name, list);
             }
             reader.readAsDataURL(file);
 
@@ -39,24 +34,13 @@ class Upload extends React.PureComponent {
         }
     }
 
-    render() {
-        const { classes, name, accept, children } = this.props;
-        return (
-            <label htmlFor={name} className={classes.label}>
-                {children}
-                <input name={name} id={name} type="file" multiple accept={accept} onChange={this.upload} className="d-none" />
-            </label>
-        );
-    }
+    return (
+        <label htmlFor={name} className="Upload-label">
+            {children}
+            <input name={name} id={name} type="file" multiple accept={accept} onChange={upload} className="d-none" />
+        </label>
+    );
 }
-const styles = (theme) => ({
-    label: {
-        marginBottom: 0,
-        padding: 12,
-        cursor: 'pointer',
-        color: theme.palette.text.secondary
-    }
-});
 
 const mapStateToProps = state => ({
     PostReducers: state.PostReducers
@@ -65,7 +49,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     SetProp
 }, dispatch)
 
-export default connect(
+export default React.memo(connect(
     mapStateToProps,
     mapDispatchToProps
-)(withStyles(styles)(Upload));
+)(Upload));

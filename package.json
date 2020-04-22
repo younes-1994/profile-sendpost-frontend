@@ -12,7 +12,6 @@
     "antd": "^4.1.4",
     "antd-scss-theme-plugin": "^1.0.8",
     "babel-plugin-import": "^1.13.0",
-    "bootstrap": "^4.4.1",
     "clsx": "^1.1.0",
     "css-loader": "^3.5.2",
     "customize-cra": "^0.9.1",
